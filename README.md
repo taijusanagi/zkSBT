@@ -17,6 +17,8 @@ We are leveraging ZKP, so the SBT is managed on-chain, but actual data is never 
 
 https://docs.google.com/presentation/d/1xxOehKbgM_QP3lgP6JZ4cTB4VcvhXqJZxb83q-iR-Fg/edit?usp=sharing
 
+### Live Demo
+
 ### Issuer
 
 ![issuer](./docs/issuer.png)

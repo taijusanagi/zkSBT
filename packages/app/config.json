@@ -1,8 +1,8 @@
 {
   "name": "zkSBT",
-  "description": "zKSBT",
+  "description": "zKSBT for Privacy-Preserved Onchain Identity",
   "url": {
-    "app": "https://zk-sbt.vercel.app",
+    "app": "https://zk-sbt-five.vercel.app",
     "docs": "https://github.com/taijusanagi/zkSBT/blob/main/README.md",
     "github": "https://github.com/taijusanagi/zkSBT"
   },
