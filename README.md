@@ -61,7 +61,7 @@ https://docs.google.com/presentation/d/1xxOehKbgM_QP3lgP6JZ4cTB4VcvhXqJZxb83q-iR
 ![architecture-zkp](./docs/architecture-zkp.png)
 
 - Our ZKP implementation is an extended version of [this repo](https://github.com/enricobottazzi/ZK-SBT) which leverages Iden3.
-- Only hash data is stored on-chain, and use ZKP for the verification
+- Only signature hash is stored on-chain, and use ZKP for the verification
 
 ## Inspiration
 
@@ -79,3 +79,15 @@ Our service provides issue credential on-chain for better composability and stil
 
 We are not being the competitor of those existing great services.
 We can have zkSBT gateway for the above services so that we can access the existing user base too.
+
+## Technical Challenge
+
+For the smart contract implementation, we leveraged existing ZKP smart contract implementation.
+
+We focused on better UX to issue/hold/verify the to make it usable in the actual use case.
+
+### Main Reference
+
+https://github.com/enricobottazzi/ZK-SBT
+
+https://github.com/SpartanLabsXyz/zk-sbt
