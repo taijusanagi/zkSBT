@@ -19,6 +19,8 @@ https://docs.google.com/presentation/d/1xxOehKbgM_QP3lgP6JZ4cTB4VcvhXqJZxb83q-iR
 
 ### Live Demo
 
+https://zk-sbt-five.vercel.app/
+
 ### Issuer
 
 ![issuer](./docs/issuer.png)
