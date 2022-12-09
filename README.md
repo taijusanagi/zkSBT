@@ -50,3 +50,20 @@ zKSBT for Privacy-Preserved Onchain Identity
 ![architecture-zkp](./docs/architecture-zkp.png)
 
 Our ZKP implementation is extended version of [this repo](https://github.com/enricobottazzi/ZK-SBT) which leverages Iden3.
+
+## Inspiration
+
+### POAP and Kudos
+
+We have a similar NFT distribution model with POAP and Kudos. POAP is proof of attendance and Kudos is the SBT version of POAP.
+Our service provides more flexible credential types and leverages ZKP for user privacy.
+
+### Polygon ID
+
+We have a similar credential model with Polygon ID. Polygon ID is a verifiable credential management tool with ZKP and the credential is issued off-chain but verifiable on-chain.
+Our service provides issue credential on-chain for better composability and still preserve user privacy with ZKP.
+
+### Composability
+
+We are not being the competitor of those existing great services.
+We can have zkSBT gateway for the above services so that we can access the existing user-base too.
