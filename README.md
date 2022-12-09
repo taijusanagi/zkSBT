@@ -6,6 +6,17 @@ zKSBT for Privacy-Preserved Onchain Identity
 
 ## Overview
 
+zkSBT is an SBT issuer/holder/verifier app with ZKP.
+Issuers can generate SBT and holders can hold the minted SBT, then the SBT can be verified on-chain.
+
+We are leveraging ZKP, so the SBT is managed on-chain, but actual data is never disclosed to others.
+
+## Submission
+
+### Pitch Deck
+
+https://docs.google.com/presentation/d/1xxOehKbgM_QP3lgP6JZ4cTB4VcvhXqJZxb83q-iR-Fg/edit?usp=sharing
+
 ### Issuer
 
 ![issuer](./docs/issuer.png)
@@ -20,7 +31,7 @@ zKSBT for Privacy-Preserved Onchain Identity
 - Can display SBTs in the wallet
 - Can verify the SBTs credential using ZKP
 
-## QRCode Based Communication
+## QRCode Communication
 
 ![qrcode-communication](./docs/qrcode-communication.png)
 
@@ -40,16 +51,17 @@ zKSBT for Privacy-Preserved Onchain Identity
 
 ### Verifiable Credential
 
-![architecture-credential](./docs/architecture-credential.svg)
+![architecture-credential](./docs/architecture-credential.png)
 
 - Credential management is using [W3C verifiable credential model](https://www.w3.org/TR/vc-data-model/#ecosystem-overview).
-- We are using SBTs as credential registry in this credential model
+- We are using SBTs as a credential registry
 
 ### ZKP
 
 ![architecture-zkp](./docs/architecture-zkp.png)
 
-Our ZKP implementation is extended version of [this repo](https://github.com/enricobottazzi/ZK-SBT) which leverages Iden3.
+- Our ZKP implementation is an extended version of [this repo](https://github.com/enricobottazzi/ZK-SBT) which leverages Iden3.
+- Only hash data is stored on-chain, and use ZKP for the verification
 
 ## Inspiration
 
@@ -66,4 +78,4 @@ Our service provides issue credential on-chain for better composability and stil
 ### Composability
 
 We are not being the competitor of those existing great services.
-We can have zkSBT gateway for the above services so that we can access the existing user-base too.
+We can have zkSBT gateway for the above services so that we can access the existing user base too.
