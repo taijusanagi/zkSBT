@@ -39,6 +39,11 @@ contract PrivateSoulMinter is Ownable {
   /// @notice Get how many SoulMinter NFTs a certain user owns
   mapping(address => uint256) public balanceOf;
 
+  // this is for easy demo
+  // this could be better and efficient in prod
+  mapping(uint256 => address) public issuers;
+  mapping(address => uint256) public souls;
+
   /// @dev Counter for the next tokenID, defaults to 1 for better gas on first mint
   uint256 internal nextTokenId = 1;
 
@@ -89,17 +94,17 @@ contract PrivateSoulMinter is Ownable {
   /// @notice Mint a new Soulbound NFT to `to`
   /// @param to The recipient of the NFT
   /// @param metaURI The URL to the token metadata
-  function mint(address to, string calldata metaURI, bytes32 claimHashMetadata) public onlyOwner {
+  function mint(address to, string calldata metaURI, bytes32 claimHashMetadata) public {
     require(balanceOf[to] < 1, "You can only have one token associated to your soul");
-
     unchecked {
       balanceOf[to]++;
     }
-
     ownerOf[nextTokenId] = to;
     tokenURI[nextTokenId] = metaURI;
     claimSignatureHash[nextTokenId] = claimHashMetadata;
 
+    issuers[nextTokenId] = msg.sender;
+    souls[to] = nextTokenId;
     emit Transfer(address(0), to, nextTokenId++);
   }
 }

@@ -3,7 +3,7 @@ import "@nomicfoundation/hardhat-toolbox";
 import * as dotenv from "dotenv";
 import { HardhatUserConfig } from "hardhat/config";
 
-import { TIMEOUT } from "./config";
+import { HARDHAT_CHAINID, TIMEOUT } from "./config";
 import { getMnemonic } from "./lib/dev/mnemonic";
 import { getNetworksUserConfigs } from "./lib/dev/network";
 
@@ -27,6 +27,12 @@ const config: HardhatUserConfig = {
     },
   },
   networks: {
+    hardhat: {
+      chainId: HARDHAT_CHAINID,
+      accounts: {
+        mnemonic,
+      },
+    },
     ...networksUserConfigs,
   },
   etherscan: {

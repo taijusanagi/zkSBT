@@ -4,6 +4,12 @@ import { createContext, useEffect, useState } from "react";
 import { useAccount, useNetwork, useSigner } from "wagmi";
 
 import networkJsonFile from "../../../contracts/network.json";
+import {
+  PrivateSoulMinter,
+  PrivateSoulMinter__factory,
+  Verifier,
+  Verifier__factory,
+} from "../../../contracts/typechain-types";
 import { ChainId, isChainId, NetworkConfig } from "../../../contracts/types/network";
 
 export interface ConnectedContextValue {
@@ -12,6 +18,8 @@ export interface ConnectedContextValue {
   signer: ethers.Signer;
   signerAddress: string;
   networkConfig: NetworkConfig;
+  privateSoulMinter: PrivateSoulMinter;
+  verifier: Verifier;
 }
 
 export interface ConnectedContext {
@@ -34,6 +42,7 @@ export const ConnectedContextProvider: React.FC<ConnectedContextProviderProps> =
   useEffect(() => {
     (async () => {
       if (!chain || !signer || !signer.provider || !address) {
+        setConnected(undefined);
         return;
       }
       const chainId = String(chain.id);
@@ -43,12 +52,16 @@ export const ConnectedContextProvider: React.FC<ConnectedContextProviderProps> =
       const provider = signer.provider;
       const networkConfig = networkJsonFile[chainId];
       const signerAddress = address;
+      const privateSoulMinter = PrivateSoulMinter__factory.connect(networkConfig.deployments.privateSoulMinter, signer);
+      const verifier = Verifier__factory.connect(networkConfig.deployments.verifier, signer);
       setConnected({
         chainId,
         provider,
         signer,
         signerAddress,
         networkConfig,
+        privateSoulMinter,
+        verifier,
       });
     })();
   }, [chain, signer, address]);

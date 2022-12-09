@@ -13,6 +13,7 @@
     "predev": "yarn prebuild",
     "dev": "run-p dev:*",
     "dev:app": "yarn workspace @zksbt/app dev",
+    "dev:contracts": "yarn workspace @zksbt/contracts dev",
     "prebuild": "run-p prebuild:*",
     "prebuild:contracts": "yarn workspace @zksbt/contracts build",
     "build": "run-p build:*",
@@ -20,7 +21,8 @@
     "test": "run-p test:*",
     "test:contracts": "yarn workspace @zksbt/contracts test",
     "lint": "run-p lint:*",
-    "lint:app": "yarn workspace @zksbt/app lint"
+    "lint:app": "yarn workspace @zksbt/app lint",
+    "lint:contracts": "yarn workspace @zksbt/contracts lint"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",

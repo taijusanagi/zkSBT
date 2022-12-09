@@ -43,12 +43,13 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <MenuButton aria-label="Options">
                   <AiOutlineMenu />
                 </MenuButton>
-                <MenuList>
+                <MenuList mt="2">
                   {routes.map(({ path, name }) => {
                     return (
                       <MenuItem
                         key={path}
                         fontWeight={"medium"}
+                        fontSize={"sm"}
                         onClick={() => {
                           router.push(path);
                         }}

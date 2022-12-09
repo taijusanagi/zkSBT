@@ -1,13 +1,10 @@
 import { Box, HStack, Stack, Text } from "@chakra-ui/react";
 
-export interface CredentialProps {
-  issuer: string;
-  credentialType: string;
-  operator: string;
-  value: string;
-}
+import { Credential } from "@/types/Credential";
 
-export const Credential: React.FC<CredentialProps> = ({ issuer, credentialType, operator, value }) => {
+export type CredentialProps = Credential;
+
+export const CredentialCard: React.FC<CredentialProps> = ({ issuer, credentialType, operator, value }) => {
   return (
     <Box bgGradient="linear(to-br, black, gray.600)" border={"2px"} borderColor={"gray.100"} rounded="2xl">
       <Stack p="4" mb="20">
