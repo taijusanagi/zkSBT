@@ -4,7 +4,6 @@ import {
   Flex,
   HStack,
   Icon,
-  IconButton,
   Image,
   Link,
   Menu,
@@ -13,11 +12,12 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useRouter } from "next/router";
 import { AiOutlineMenu } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
 
 import { Head } from "@/components/Head";
-import { useAuth } from "@/hooks/useAuth";
+import { routes } from "@/config/routes";
 
 import configJsonFile from "../../../config.json";
 
@@ -26,16 +26,10 @@ export interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const { auth } = useAuth();
-
-  const routes = [
-    { path: "/", name: "Home" },
-    { path: "/issue", name: "Issue" },
-    { path: "/verify", name: "Verify" },
-  ];
+  const router = useRouter();
 
   return (
-    <Flex minHeight={"100vh"} direction={"column"} bg={configJsonFile.style.color.black.bg}>
+    <Flex minHeight={"100vh"} direction={"column"} bgGradient="linear(to-b, red.100, blue.100)">
       <Head />
       <Container as="section" maxW="8xl">
         <Box as="nav" py="4">
@@ -43,24 +37,28 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Link href="/">
               <Image src={"/assets/icon.png"} alt="logo" h="8" rounded={configJsonFile.style.radius} />
             </Link>
-            <HStack spacing="3">
+            <HStack spacing="4">
               <ConnectButton accountStatus={"address"} showBalance={false} chainStatus={"icon"} />
-              {auth && (
-                <Menu>
-                  <MenuButton
-                    rounded={configJsonFile.style.radius}
-                    as={IconButton}
-                    aria-label="Options"
-                    icon={<AiOutlineMenu />}
-                    variant="outline"
-                  />
-                  <MenuList>
-                    {routes.map(({ path, name }) => {
-                      return <MenuItem key={path}>{name}</MenuItem>;
-                    })}
-                  </MenuList>
-                </Menu>
-              )}
+              <Menu>
+                <MenuButton aria-label="Options">
+                  <AiOutlineMenu />
+                </MenuButton>
+                <MenuList>
+                  {routes.map(({ path, name }) => {
+                    return (
+                      <MenuItem
+                        key={path}
+                        fontWeight={"medium"}
+                        onClick={() => {
+                          router.push(path);
+                        }}
+                      >
+                        {name}
+                      </MenuItem>
+                    );
+                  })}
+                </MenuList>
+              </Menu>
             </HStack>
           </HStack>
         </Box>
@@ -76,7 +74,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <Icon
                   as={FaGithub}
                   aria-label="github"
-                  color={configJsonFile.style.color.white.text.secondary}
+                  color={configJsonFile.style.color.black.text.secondary}
                   w={6}
                   h={6}
                 />
