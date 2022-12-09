@@ -8,7 +8,7 @@ zKSBT for Privacy-Preserved Onchain Identity
 
 ### Issuer
 
-![issuer]
+![issuer](./docs/issuer.png)
 
 - Can create privacy-preserved SBTs using ZKP
 - Can distribute the SBTs to target holders
