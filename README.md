@@ -84,7 +84,7 @@ We can have zkSBT gateway for the above services so that we can access the exist
 
 For the smart contract implementation, we leveraged existing ZKP smart contract implementation.
 
-We focused on better UX to issue/hold/verify the to make it usable in the actual use case.
+We focused on better UX with issuing, holding, and verifying zkSBT to make it usable in the actual use case.
 
 ### Main Reference
 
