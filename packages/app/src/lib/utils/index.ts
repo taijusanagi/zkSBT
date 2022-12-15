@@ -13,3 +13,7 @@ export const truncate = (str: string | undefined, pre: number, post?: number) =>
 export const compareInLowerCase = (str1: string, str2: string) => {
   return str1.toLowerCase() === str2.toLowerCase();
 };
+
+export const sleep = async (time: number) => {
+  await new Promise((resolve) => setTimeout(resolve, time));
+};

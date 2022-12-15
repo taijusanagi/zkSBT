@@ -95,3 +95,13 @@ We focused on better UX with issuing, holding, and verifying zkSBT to make it us
 https://github.com/enricobottazzi/ZK-SBT
 
 https://github.com/SpartanLabsXyz/zk-sbt
+
+## Deployed Contract
+
+### PrivateSoulMinter
+
+https://goerli.etherscan.io/address/0xF6F9B3aF9Bef3239F2eBD3ce0B62087275Cc4b36#code
+
+### Verifier
+
+https://goerli.etherscan.io/address/0xAe1386449EE2b157B3e55F34bC24Cc699c2b8232#code
