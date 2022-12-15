@@ -95,7 +95,7 @@ const HolderPage: NextPage = () => {
       console.log("Verify with verifier contract", connected.verifier.address);
       await sleep(2000);
 
-      console.log("Your identity is verifyed on-chain with ZKP!!");
+      console.log("Your identity is verified on-chain with ZKP!!");
     } catch (e) {
     } finally {
       setIsLoading(false);
