@@ -17,3 +17,8 @@ export const compareInLowerCase = (str1: string, str2: string) => {
 export const sleep = async (time: number) => {
   await new Promise((resolve) => setTimeout(resolve, time));
 };
+
+export async function getFileBuffer(file: string) {
+  const req = await fetch(file);
+  return Buffer.from(await req.arrayBuffer());
+}

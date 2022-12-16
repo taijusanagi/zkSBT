@@ -21,6 +21,10 @@ https://docs.google.com/presentation/d/1xxOehKbgM_QP3lgP6JZ4cTB4VcvhXqJZxb83q-iR
 
 https://zk-sbt-five.vercel.app/
 
+### Video
+
+https://youtu.be/bDcOp4BmZxo
+
 ### Issuer
 
 ![issuer](./docs/issuer.png)
@@ -36,6 +40,8 @@ https://zk-sbt-five.vercel.app/
 - Can verify the SBTs credential using ZKP
 
 ## QRCode Communication
+
+This is going to implement QR code communication
 
 ![qrcode-communication](./docs/qrcode-communication.png)
 

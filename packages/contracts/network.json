@@ -9,8 +9,8 @@
     "rpc": "https://eth-goerli.g.alchemy.com/v2/vzXI1-6dtYrvErKC7Q_KeiFLodiTojGg",
     "explorer": { "name": "Etherscan", "url": "https://goerli.etherscan.io" },
     "deployments": {
-      "privateSoulMinter": "0xF6F9B3aF9Bef3239F2eBD3ce0B62087275Cc4b36",
-      "verifier": "0xAe1386449EE2b157B3e55F34bC24Cc699c2b8232"
+      "privateSoulMinter": "0x662506FC9F1229D8d46964d6F987c98de49BCE48",
+      "verifier": "0xba197739eC32fc15ff4Dc99a02896D16C289704e"
     }
   },
   "1337": {
@@ -23,8 +23,8 @@
     "rpc": "http://localhost:8545",
     "explorer": { "name": "Localchain Exproler", "url": "http://localhost:3001" },
     "deployments": {
-      "privateSoulMinter": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-      "verifier": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+      "privateSoulMinter": "0x5E1417C303048C7FF12e678574e3b48b3B941Ad1",
+      "verifier": "0x83d39B47d3a963613b46bC6DA3eC3BA235B4b95c"
     }
   }
 }

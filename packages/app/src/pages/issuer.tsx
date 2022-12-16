@@ -1,4 +1,5 @@
 import { Button, FormControl, FormLabel, Input, Stack, Text } from "@chakra-ui/react";
+import { ethers } from "ethers";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
 
@@ -7,6 +8,8 @@ import { Unit } from "@/components/Unit";
 import { useConnected } from "@/hooks/useConnected";
 import { useErrorHandler } from "@/hooks/useErrorHandler";
 import { sleep } from "@/lib/utils";
+import { getClaim } from "@/lib/zkp/claim";
+import { getSignature } from "@/lib/zkp/sig";
 
 const CreatePage: NextPage = () => {
   const { connected } = useConnected();
@@ -80,7 +83,6 @@ const CreatePage: NextPage = () => {
                   const parsedValue = Number(value);
 
                   console.log("input value...");
-
                   console.log("credentialType", credentialType);
                   console.log("valueType", valueType);
                   console.log("operator", operator);
@@ -89,33 +91,27 @@ const CreatePage: NextPage = () => {
                   await sleep(1000);
 
                   const nftMetadataURI =
-                    "https://bafybeibodo3cnumo76lzdf2dlatuoxtxahgowxuihwiqeyka7k2qt7eupy.ipfs.nftstorage.link/";
+                    "https://bafkreicehnsubrhvc6nemiqlowequkyl5df47fsv37zskzz3mchweqpv5a.ipfs.nftstorage.link";
                   console.log("NFT metadata with public info is stored in IPFS", nftMetadataURI);
 
                   await sleep(3000);
 
                   console.log("claim and signature data to be stored off-chain");
 
-                  console.log(
-                    "Claim",
-                    "180410020913331409885634153623124536270,0,18,0,0,0,328613907243889777235018884535160632327,0"
-                  );
+                  const claim = getClaim();
+                  console.log("claim", claim);
 
-                  console.log(
-                    "Signature",
-                    "13692340849919074629431384397504503745238970557428973719013760553241945274451",
-                    "18066895302190271072509218697462294016350129302467595054878773027470753683267",
-                    "238898180964301975640138172772451490757586081215817420470161945050687067203"
-                  );
+                  const signature = getSignature();
+                  console.log("signature", signature);
 
                   await sleep(1000);
 
-                  const claimHash = "0xfbaa3f5a157a7cbc9edc0927227144cf74248de5457337a88328a6dfec6d1ce6";
-                  console.log("Hash of signature to be stored on-chain with SBT", claimHash);
+                  const claimHash = ethers.utils.solidityKeccak256(["uint", "uint", "uint"], signature.split(","));
+                  console.log("hash of signature to be stored on-chain with SBT", claimHash);
 
                   await sleep(1000);
 
-                  console.log("Now requesting to mint SBTs");
+                  console.log("now requesting to mint SBTs");
                   const tx = await connected.privateSoulMinter.mint(mintToAddress, nftMetadataURI, claimHash);
                   console.log(tx.hash);
                 } catch (e) {

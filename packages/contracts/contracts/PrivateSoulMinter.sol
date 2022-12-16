@@ -1,21 +1,19 @@
 // this contract is copied from
-// https://github.com/enricobottazzi/ZK-SBT/blob/main/contracts/PrivateSoulMinter.sol
+// https://github.com/enricobottazzi/ZK-SBT/blob/29bb0d8886c54850994a03750d46b9d059450cba/contracts/PrivateSoulMinter.sol
 
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.11;
-// Credit to @Miguel Piedrafita for the SoulBound NFT contract skeleton
 
-import "@openzeppelin/contracts/access/Ownable.sol";
+// Credit to @Miguel Piedrafita for the SoulBound NFT contract skeleton
 
 /// @title PrivateSoulMinter
 /// @author Enrico Bottazzi
-/// @notice Barebones contract to mint ZK SBT
-
-contract PrivateSoulMinter is Ownable {
+/// @notice Barebones contract to mint Private Soulbound NFTs
+contract PrivateSoulMinter {
   /// @notice Thrown when trying to transfer a Soulbound token
   error Soulbound();
 
-  /// @notice Emitted when minting a ZK SBT
+  /// @notice Emitted when minting a Soulbound NFT
   /// @param from Who the token comes from. Will always be address(0)
   /// @param to The token recipient
   /// @param id The ID of the minted token
@@ -26,6 +24,9 @@ contract PrivateSoulMinter is Ownable {
 
   /// @notice The name for the token
   string public constant name = "Soulbound NFT";
+
+  /// @notice The owner of this contract (set to the deployer)
+  address public immutable owner = msg.sender;
 
   /// @notice Get the metadata URI for a certain tokenID
   mapping(uint256 => string) public tokenURI;
@@ -94,17 +95,19 @@ contract PrivateSoulMinter is Ownable {
   /// @notice Mint a new Soulbound NFT to `to`
   /// @param to The recipient of the NFT
   /// @param metaURI The URL to the token metadata
-  function mint(address to, string calldata metaURI, bytes32 claimHashMetadata) public {
+  function mint(address to, string calldata metaURI, bytes32 claimHashMetadata) public payable {
     require(balanceOf[to] < 1, "You can only have one token associated to your soul");
+
     unchecked {
       balanceOf[to]++;
     }
+
     ownerOf[nextTokenId] = to;
     tokenURI[nextTokenId] = metaURI;
     claimSignatureHash[nextTokenId] = claimHashMetadata;
 
-    issuers[nextTokenId] = msg.sender;
     souls[to] = nextTokenId;
+
     emit Transfer(address(0), to, nextTokenId++);
   }
 }
