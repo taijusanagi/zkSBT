@@ -23,7 +23,7 @@ https://zk-sbt-five.vercel.app/
 
 ### Video
 
-https://youtu.be/bDcOp4BmZxo
+https://youtu.be/g9CDw-OUCSM
 
 ### Issuer
 
@@ -106,8 +106,8 @@ https://github.com/SpartanLabsXyz/zk-sbt
 
 ### PrivateSoulMinter
 
-https://goerli.etherscan.io/address/0xF6F9B3aF9Bef3239F2eBD3ce0B62087275Cc4b36#code
+https://goerli.etherscan.io/address/0x662506FC9F1229D8d46964d6F987c98de49BCE48#code
 
 ### Verifier
 
-https://goerli.etherscan.io/address/0xAe1386449EE2b157B3e55F34bC24Cc699c2b8232#code
+https://goerli.etherscan.io/address/0xba197739eC32fc15ff4Dc99a02896D16C289704e#code
